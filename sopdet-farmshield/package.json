@@ -1,0 +1,23 @@
+{
+  "name": "sopdet-farmshield",
+  "version": "2.0.0",
+  "private": true,
+  "description": "SOPDET FARMSHIELD - NASA POWER climate explorer and crop-rotation scenario comparison (student project)",
+  "type": "module",
+  "scripts": {
+    "data": "node scripts/build-data.mjs",
+    "dev": "node scripts/dev.mjs",
+    "build": "node build.mjs",
+    "preview": "node scripts/serve.mjs",
+    "test": "node tests/verify-data.mjs",
+    "test:browser": "node tests/smoke.mjs"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}

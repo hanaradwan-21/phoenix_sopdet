@@ -1,0 +1,17 @@
+Country,Region,Crop_Name,Season,Suitability_Index,Base_Yield_Tons_Ha,Irrigation_Requirement_mm
+Egypt,El-Hamoul,Wheat,Winter,8200,6.6,480
+Egypt,El-Hamoul,Rice,Summer,8500,9.0,1400
+Egypt,El-Hamoul,Maize,Summer,7800,8.0,650
+Egypt,El-Hamoul,Potato,Winter,7200,26.0,500
+Egypt,El-Hamoul,Sugar Beet,Winter,7800,52.0,650
+Egypt,El-Hamoul,Barley,Winter,6800,3.5,350
+Egypt,El-Hamoul,Mustard,Winter,5800,1.6,350
+Egypt,El-Hamoul,Cotton,Summer,7600,2.8,850
+India,Ludhiana,Wheat,Rabi,8300,5.2,400
+India,Ludhiana,Rice,Kharif,8000,6.6,1500
+India,Ludhiana,Maize,Kharif,6500,3.9,350
+India,Ludhiana,Potato,Rabi,7000,24.0,400
+India,Ludhiana,Sugar Beet,Rabi,6000,45.0,600
+India,Ludhiana,Barley,Rabi,7000,3.6,250
+India,Ludhiana,Mustard,Rabi,7200,1.6,180
+India,Ludhiana,Cotton,Kharif,6800,1.9,650

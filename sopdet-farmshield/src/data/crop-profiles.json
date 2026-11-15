@@ -1,0 +1,155 @@
+{
+ "verified": false,
+ "note": "No source, unit definition or method is provided for any numeric column. Treated as unverified team-provided inputs.",
+ "columns": {
+  "suitabilityIndex": "Suitability_Index (scale and method unknown)",
+  "baseYieldTHa": "Base_Yield_Tons_Ha (assumed t/ha, source unknown)",
+  "irrigationMm": "Irrigation_Requirement_mm (gross vs net, source unknown)"
+ },
+ "rows": [
+  {
+   "country": "Egypt",
+   "region": "El-Hamoul",
+   "crop": "Wheat",
+   "season": "Winter",
+   "suitabilityIndex": 8200,
+   "baseYieldTHa": 6.6,
+   "irrigationMm": 480
+  },
+  {
+   "country": "Egypt",
+   "region": "El-Hamoul",
+   "crop": "Rice",
+   "season": "Summer",
+   "suitabilityIndex": 8500,
+   "baseYieldTHa": 9,
+   "irrigationMm": 1400
+  },
+  {
+   "country": "Egypt",
+   "region": "El-Hamoul",
+   "crop": "Maize",
+   "season": "Summer",
+   "suitabilityIndex": 7800,
+   "baseYieldTHa": 8,
+   "irrigationMm": 650
+  },
+  {
+   "country": "Egypt",
+   "region": "El-Hamoul",
+   "crop": "Potato",
+   "season": "Winter",
+   "suitabilityIndex": 7200,
+   "baseYieldTHa": 26,
+   "irrigationMm": 500
+  },
+  {
+   "country": "Egypt",
+   "region": "El-Hamoul",
+   "crop": "Sugar Beet",
+   "season": "Winter",
+   "suitabilityIndex": 7800,
+   "baseYieldTHa": 52,
+   "irrigationMm": 650
+  },
+  {
+   "country": "Egypt",
+   "region": "El-Hamoul",
+   "crop": "Barley",
+   "season": "Winter",
+   "suitabilityIndex": 6800,
+   "baseYieldTHa": 3.5,
+   "irrigationMm": 350
+  },
+  {
+   "country": "Egypt",
+   "region": "El-Hamoul",
+   "crop": "Mustard",
+   "season": "Winter",
+   "suitabilityIndex": 5800,
+   "baseYieldTHa": 1.6,
+   "irrigationMm": 350
+  },
+  {
+   "country": "Egypt",
+   "region": "El-Hamoul",
+   "crop": "Cotton",
+   "season": "Summer",
+   "suitabilityIndex": 7600,
+   "baseYieldTHa": 2.8,
+   "irrigationMm": 850
+  },
+  {
+   "country": "India",
+   "region": "Ludhiana",
+   "crop": "Wheat",
+   "season": "Rabi",
+   "suitabilityIndex": 8300,
+   "baseYieldTHa": 5.2,
+   "irrigationMm": 400
+  },
+  {
+   "country": "India",
+   "region": "Ludhiana",
+   "crop": "Rice",
+   "season": "Kharif",
+   "suitabilityIndex": 8000,
+   "baseYieldTHa": 6.6,
+   "irrigationMm": 1500
+  },
+  {
+   "country": "India",
+   "region": "Ludhiana",
+   "crop": "Maize",
+   "season": "Kharif",
+   "suitabilityIndex": 6500,
+   "baseYieldTHa": 3.9,
+   "irrigationMm": 350
+  },
+  {
+   "country": "India",
+   "region": "Ludhiana",
+   "crop": "Potato",
+   "season": "Rabi",
+   "suitabilityIndex": 7000,
+   "baseYieldTHa": 24,
+   "irrigationMm": 400
+  },
+  {
+   "country": "India",
+   "region": "Ludhiana",
+   "crop": "Sugar Beet",
+   "season": "Rabi",
+   "suitabilityIndex": 6000,
+   "baseYieldTHa": 45,
+   "irrigationMm": 600
+  },
+  {
+   "country": "India",
+   "region": "Ludhiana",
+   "crop": "Barley",
+   "season": "Rabi",
+   "suitabilityIndex": 7000,
+   "baseYieldTHa": 3.6,
+   "irrigationMm": 250
+  },
+  {
+   "country": "India",
+   "region": "Ludhiana",
+   "crop": "Mustard",
+   "season": "Rabi",
+   "suitabilityIndex": 7200,
+   "baseYieldTHa": 1.6,
+   "irrigationMm": 180
+  },
+  {
+   "country": "India",
+   "region": "Ludhiana",
+   "crop": "Cotton",
+   "season": "Kharif",
+   "suitabilityIndex": 6800,
+   "baseYieldTHa": 1.9,
+   "irrigationMm": 650
+  }
+ ]
+}

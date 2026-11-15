@@ -1,0 +1,63 @@
+{
+ "audit": {
+  "EG": {
+   "rows": 1899,
+   "start": "2021-01-01",
+   "end": "2026-03-14",
+   "missing": {
+    "T2M": 0,
+    "T2M_MAX": 0,
+    "T2M_MIN": 0,
+    "RH2M": 0,
+    "WS2M": 0,
+    "ALLSKY_SFC_SW_DWN": 0,
+    "GWETTOP": 0,
+    "GWETROOT": 0,
+    "PRECTOTCORR": 0
+   },
+   "rawRows": 1899,
+   "rawDropped": 0,
+   "longestConstantRun": {
+    "T2M": 2,
+    "T2M_MAX": 2,
+    "T2M_MIN": 2,
+    "RH2M": 1,
+    "WS2M": 2,
+    "ALLSKY_SFC_SW_DWN": 2,
+    "GWETTOP": 80,
+    "GWETROOT": 183,
+    "PRECTOTCORR": 174
+   }
+  },
+  "IN": {
+   "rows": 2141,
+   "start": "2021-01-01",
+   "end": "2026-11-11",
+   "missing": {
+    "T2M": 0,
+    "T2M_MAX": 0,
+    "T2M_MIN": 0,
+    "RH2M": 0,
+    "WS2M": 0,
+    "ALLSKY_SFC_SW_DWN": 2,
+    "GWETTOP": 0,
+    "GWETROOT": 0,
+    "PRECTOTCORR": 0
+   },
+   "rawRows": 2144,
+   "rawDropped": 3,
+   "longestConstantRun": {
+    "T2M": 2,
+    "T2M_MAX": 3,
+    "T2M_MIN": 2,
+    "RH2M": 1,
+    "WS2M": 3,
+    "ALLSKY_SFC_SW_DWN": 2,
+    "GWETTOP": 12,
+    "GWETROOT": 19,
+    "PRECTOTCORR": 57
+   }
+  }
+ },
+ "crops": 16
+}
