@@ -1,55 +1,239 @@
-# SOPDET FARMSHIELD — الإصدار 2.0 (بيانات NASA POWER الحقيقية)
+# SOPDET FARMSHIELD
+### From Stars to Soil
+**Version 2.0 | NASA POWER Data Edition**
 
-مشروع طلابي. نفس الهوية البصرية (الشعار، الألوان، الخطوط، الصور والفيديو، RTL/LTR)، لكن كل الأرقام الآن إما **بيانات NASA POWER حقيقية**، أو **حسابات توضيحية موسومة**، أو **مُدخلات غير متحقق منها** موسومة. لا يوجد أي تنبؤ ولا نموذج ML.
-غير تابع لناسا ولا معتمد منها.
+An interactive crop rotation exploration platform developed by **Team PHOENIX SOPDET** for the **NASA Space Apps Challenge 2026**.
 
-## التشغيل
-المطلوب: Node.js 18 أو أحدث.
+> **Project Disclaimer:** SOPDET FARMSHIELD is an independent student project. It is not affiliated with, sponsored by, or endorsed by NASA. NASA POWER is used as a source of historical climate data.
+
+---
+
+## About the Project
+
+SOPDET FARMSHIELD is an interactive tool designed to help farmers explore and compare crop rotation plans across four growing seasons.
+
+The platform combines historical climate data from NASA POWER, crop reference profiles, and transparent rule-based checks to make agricultural information easier to explore and understand.
+
+Users can examine three crop rotation scenarios, compare seasonal conditions, identify repeated botanical families, and review potential seasonal mismatches.
+
+The project is inspired by Sopdet, the ancient Egyptian name associated with the star Sirius. It connects Egypt's agricultural heritage with modern Earth observation data.
+
+SOPDET FARMSHIELD supports the farmer's exploration and understanding of available information. It does not replace the farmer's experience or decision-making.
+
+## The Problem
+
+Crop rotation planning involves several interconnected factors, including growing seasons, crop characteristics, botanical families, and climate conditions.
+
+When these factors are considered separately, comparing alternative crop rotation plans can be challenging.
+
+SOPDET FARMSHIELD brings these elements together in one interactive platform, helping users explore different scenarios and understand potential issues through organized data and visual comparisons.
+
+## Key Features
+
+- **Interactive Farm Setup:** Select between the supported agricultural locations in Egypt and India.
+- **Climate Dashboard:** Explore historical climate information through interactive charts and indicators.
+- **Crop Rotation Planner:** Edit and examine three scenarios across four growing seasons.
+- **Scenario Comparison:** Compare current farming practice with two alternative rotation scenarios.
+- **Botanical Family Checks:** Identify consecutive crops belonging to the same botanical family.
+- **Seasonal Checks:** Highlight crops selected outside their listed growing seasons.
+- **Irrigation Reference Summary:** Display the sum of listed irrigation inputs, clearly marked as unverified.
+- **Location and Coverage:** Explore the selected location and its associated climate-data coverage.
+- **Rule-Based Guide:** Explain data variables and display calculations based on the selected location without generating predictions or agricultural recommendations.
+- **RTL/LTR Interface:** Support right-to-left and left-to-right layouts while maintaining the project's visual identity.
+
+## Supported Locations and Climate Data
+
+The current version includes two selected locations:
+
+| Location | Coordinates | Available Daily Data |
+|---|---|---|
+| El-Hamoul, Egypt | 31.3264° N, 31.1517° E | Jan 1, 2021 – Mar 14, 2026 |
+| Ludhiana, India | 30.8954° N, 76.0034° E | Jan 1, 2021 – Nov 11, 2026 |
+
+For a fair comparison between the two locations, the application uses their shared data period:
+
+**January 1, 2021 – March 14, 2026 (1,899 days).**
+
+The application uses nine climate variables, with their names, units, and source products read from the original NASA POWER file headers.
+
+The dataset includes variables from:
+- **MERRA-2**, including GWETTOP and GWETROOT.
+- **CERES SYN1deg**, including ALLSKY_SFC_SW_DWN.
+- **WS2M**, representing wind speed at 2 meters.
+
+These are gridded data values associated with specific coordinates. They are not direct measurements from individual weather stations or agricultural fields.
+
+## Data Sources and Transparency
+
+The application distinguishes between different types of information to avoid presenting estimates or unverified values as verified scientific measurements.
+
+| Data Label | Meaning |
+|---|---|
+| **NASA POWER Data** | Historical daily climate values obtained from NASA POWER files. |
+| **Illustrative Calculation** | Calculations, counts, comparisons, and rule checks based on available data or user inputs. These are not predictions. |
+| **Unverified Input** | Crop profile values whose sources, definitions, or measurement units have not yet been independently verified. |
+| **Prediction** | Not implemented. The project does not currently include a predictive model. |
+
+Numeric crop profile fields such as `suitabilityIndex`, `baseYieldTHa`, and `irrigationMm` are treated as unverified inputs. They are not presented as validated scientific measurements.
+
+## Data Validation and Integrity
+
+Data integrity is an important part of this version.
+
+The build process uses `scripts/build-data.mjs` to:
+
+- Compare cleaned climate files against their original source files value by value.
+- Verify that the combined daily weather dataset matches the union of the Egypt and India datasets.
+- Check date continuity and identify duplicate dates.
+- Verify consistency between the crop profile files.
+- Generate the application data files in `src/data/`.
+
+The build process stops when a data integrity check fails.
+
+For more details, see **[Data Audit](docs/DATA-AUDIT.md)**.
+
+## Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| React.js | Interactive user interface and application components |
+| JavaScript | Application logic and data processing |
+| HTML5 | Application structure |
+| CSS3 | Visual design and responsive layouts |
+| JSON | Structured application and crop profile data |
+| CSV | Historical climate datasets |
+| esbuild | Build and data-generation tooling |
+| NASA POWER | Historical climate data source |
+
+## Getting Started
+
+### Requirements
+
+- Node.js 18 or later
+- npm
+
+### Installation
+
+Clone the repository and navigate to the project directory:
 
 ```bash
-npm install          # مرة واحدة (احذف أي مجلد node_modules قديم قبلها)
-npm run build        # يتحقق من ملفات البيانات ثم يبني dist/
-npm run preview      # يعرض dist/ على http://localhost:4173
-# أو افتح dist/index.html مباشرة من القرص: لا يحتاج خادمًا ولا إنترنت (الخطوط فقط من Google Fonts وتعمل بدائل محلية بدونها)
-npm run dev          # بناء حي على http://localhost:5173 (حدّث الصفحة بعد كل تعديل)
-npm test             # اختبار البيانات والمسارات (بدون متصفح)
-npm run test:browser # اختبار متصفح كامل (يحتاج: npm i -D playwright && npx playwright install chromium)
+npm install
 ```
-> ملاحظة: النسخة المرفقة سابقًا كانت تعتمد على Vite 8 وبها binaries خاصة بويندوز فقط، فانتقل البناء إلى esbuild (كان هو المستخدم فعليًا في `build.mjs`)، وهو مُختبَر هنا بالكامل.
 
-## ما الذي تغيّر
-1. **حُذفت صفحة Brand & Design System** من القائمة الجانبية وقائمة الموبايل ومن المسارات (`#brand` القديم يفتح اللوحة). مكوّنات الهوية (`Logo.jsx`: Wordmark/Emblem/AppIcon/Favicon/GuideAvatar) وكل الألوان والخطوط باقية في كل الصفحات.
-2. **لا نتائج ML ولا درجات ولا توصيات.** حُذفت كل الدرجات (تربة/إنتاجية/مخاطر/سوق/«الملاءمة») والمخطط الراداري والترتيب والملخص «الأعلى درجة». 
-3. **Crop Rotation Planner** أصبح أداة مقارنة: ثلاثة سيناريوهات × 4 مواسم قابلة للتعديل، مع فحوص قواعد (محصول خارج موسمه المدرج؛ نفس الفصيلة النباتية متتالية)، ومجموع أرقام الري المدرجة (غير متحقق منها)، ومناخ NASA لكل موسم، وقسم «التنبؤ» الفارغ عمدًا.
-4. **اختيار مصر/الهند** (الشريط العلوي أو إعداد المزرعة) يغيّر فعليًا كل الإحصائيات والرسوم في كل الصفحات.
-5. صفحة **الخريطة** صارت «الموقع والتغطية»: رسم تخطيطي لخلية MERRA-2 من إحداثيات حقيقية (بدون سواحل أو صور أقمار)، وطبقات NDVI/SMAP/Landsat/IMERG/ECOSTRESS/GRACE معروضة كـ «غير مدمجة».
-6. **الـ Guide** قائم على قواعد (لا يدّعي ذكاءً اصطناعيًا): يشرح المتغيرات ويذكر أرقامًا محسوبة لحظيًا من ملف الدولة المختارة، ويرفض النصح أو التنبؤ.
+### Build the Application
 
-## أنواع المحتوى (كل رقم ينتمي لواحد)
-| الوسم | المعنى |
-|---|---|
-| **NASA POWER data** | قيم يومية من الملفات. منتجات شبكية (MERRA-2 / CERES) لنقطة واحدة، وليست قراءة محطة أو حقل |
-| **Illustrative calculation** | جمع/عدّ/فحص قواعد على البيانات أو مُدخلاتك. ليس توقعًا |
-| **Unverified input** | أرقام `crop_profiles` (بلا مصدر أو وحدة معرّفة) |
-| **Prediction** | غير موجود: لا نموذج متصل |
+```bash
+npm run build
+```
 
-## البيانات (`data/nasa/`)
-- `egypt_weather_clean.csv` = الحمول (31.3264°N, 31.1517°E)، 2021-01-01 → **2026-03-14** (1899 يومًا).
-- `india_weather_clean.csv` = لوديانا (30.8954°N, 76.0034°E)، 2021-01-01 → **2026-11-11** (2141 يومًا).
-- **الفترة المشتركة** للمقارنة العادلة: 2021-01-01 → 2026-03-14 (1899 يومًا). مقارنة مصر-الهند في التطبيق تستخدمها دائمًا.
-- المتغيرات التسعة ووحداتها ومنتجاتها تُقرأ من هيدر ملفات POWER الأصلية: `GWETTOP/GWETROOT` من **MERRA-2** (بدون وحدة 0–1، ليست SMAP)، `WS2M` رياح عند 2 م (لا WS10M)، `ALLSKY_SFC_SW_DWN` من **CERES SYN1deg**.
-- `scripts/build-data.mjs` يتحقق في كل بناء من: تطابق الملفات النظيفة مع الخام قيمة بقيمة، وأن `weather_daily_clean.csv` = اتحاد الدولتين، واستمرارية التواريخ وعدم التكرار، وأن ملفي المحاصيل متطابقان؛ ثم يولّد `src/data/*.json`. أي مخالفة توقف البناء.
-- التقرير الكامل: `docs/DATA-AUDIT.md`.
+This validates the data files and generates the production build in `dist/`.
 
-## ما لا يوجد (وما يلزم لإضافته)
-| الميزة | المطلوب |
-|---|---|
-| NDVI / SMAP / Landsat / صور أقمار | ملفات raster للمنطقة والتواريخ + حدود الحقول |
-| تنبؤ إنتاجية / ML | نموذج موثّق + إنتاجية فعلية للتدريب والاختبار + خطأ اختبار معلن + بيانات تربة |
-| استخدام `Suitability_Index`/`Base_Yield`/`Irrigation` كعلم | مصدر كل رقم، تعريفه ووحدته (إجمالي/صافي؟)، مقياس المؤشر |
-| بيانات لأي موقع آخر | ملف POWER لكل نقطة (لا يوجد Backend/API في المشروع) |
-| بيانات «اليوم» | ملف أحدث: ملف مصر ينتهي 2026-03-14 والتطبيق ينبّه لذلك |
+### Preview the Production Build
 
-## البنية
-`src/nasa.js` (كل الحسابات على البيانات) · `src/data.js` (المحاصيل من الملف + قواعد السيناريو) · `src/pages/*` · `src/components/*` (الشعار والرسوم) · `scripts/` · `tests/` · `public/media/`.
-التخزين: إعدادات المزرعة واللغة في `localStorage` للمتصفح فقط؛ لا خادم.
+```bash
+npm run preview
+```
+
+Open:
+
+```text
+http://localhost:4173
+```
+
+### Start the Development Server
+
+```bash
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:5173
+```
+
+Refresh the browser after making changes.
+
+### Run Tests
+
+Run the data and path checks:
+
+```bash
+npm test
+```
+
+For browser testing, install Playwright and Chromium:
+
+```bash
+npm i -D playwright
+npx playwright install chromium
+npm run test:browser
+```
+
+### Offline Access
+
+The generated `dist/index.html` can also be opened directly from the local file system. The application does not require a backend server for this mode. Google Fonts may require an internet connection; local font fallbacks are provided.
+
+## Project Structure
+
+```text
+SOPDET-FARMSHIELD/
+├── data/
+│   └── nasa/
+├── docs/
+│   └── DATA-AUDIT.md
+├── public/
+│   └── media/
+├── scripts/
+│   └── build-data.mjs
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── data/
+│   ├── nasa.js
+│   └── data.js
+├── tests/
+├── dist/
+└── README.md
+```
+
+## Current Scope and Limitations
+
+SOPDET FARMSHIELD is an exploratory crop rotation tool with a defined data scope.
+
+- Only two selected locations are currently supported.
+- The Egyptian climate dataset ends on March 14, 2026, and the application indicates this data coverage limit.
+- Satellite data layers such as NDVI, SMAP, Landsat, IMERG, ECOSTRESS, and GRACE are not currently integrated.
+- The map provides a schematic representation of the MERRA-2 grid cell associated with the selected coordinates, not satellite imagery or detailed field boundaries.
+- Some crop profile values remain unverified and should not be interpreted as validated agricultural measurements.
+- The application does not include machine learning, yield prediction, live weather data, or a predictive model.
+- There is no backend or remote API. Farm settings and language preferences are stored locally in the browser using `localStorage`.
+
+## Future Development
+
+Planned improvements include:
+
+- Expanding climate data coverage to additional agricultural locations.
+- Integrating satellite and Earth observation datasets with appropriate geographic and temporal coverage.
+- Improving crop profile documentation and verifying missing sources, definitions, and units.
+- Enhancing crop rotation checks with additional documented agricultural factors.
+- Adding field boundaries and more detailed geographic information.
+- Improving data updates, testing, and user experience.
+
+Any future predictive functionality would require appropriate verified datasets, documented methodology, and independent evaluation before being introduced.
+
+## My Contribution
+
+I was responsible for the coding and technical implementation of SOPDET FARMSHIELD.
+
+My contribution focused on developing the application structure and user interface, implementing interactive features, organizing application logic, and integrating the climate and crop data into the platform.
+
+I also worked on presenting complex information through clear dashboards, visualizations, comparisons, and user-facing explanations.
+
+## Team
+
+**PHOENIX SOPDET**
+
+NASA Space Apps Challenge 2026
+
+**From Stars to Soil.**
